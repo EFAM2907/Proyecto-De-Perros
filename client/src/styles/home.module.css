@@ -1,0 +1,34 @@
+.AllCards{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.containerCards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #d18282;
+    margin: 50px;
+    row-gap: 3rem;
+    border-radius: 20px;
+  }
+  
+  .dogsGrid{
+   display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* background-color: #30bb81; */
+    margin: 10px;
+    row-gap: 3rem;
+    border-radius: 20px;
+  
+  
+}
+
+.paginado{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 0.3em;
+    padding: 0.2em;
+    color: rgb(0, 0, 0);
+    justify-content: space-evenly;
+   
+}

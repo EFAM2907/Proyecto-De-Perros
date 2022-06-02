@@ -1,0 +1,33 @@
+/* .countryContainer{
+    background-color: transparent;
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 0.5rem;
+    justify-content: space-between;
+  
+   
+    
+   
+      
+} 
+.containerCards{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #d18282;
+    margin: 50px;
+    row-gap: 3rem;
+    border-radius: 20px;
+
+} */
+
+.margin{
+    height: 470px;
+    display: block;
+    margin:auto;
+    width: 500px;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgb(8, 8, 8), 0 0 20px rgb(7, 7, 7), 0 0 30px #737474, 0 0 10px #9a9e9e,
+    0 0 10px #939797, 0 0 10px #337ec9, 0 0 10px #757373;
+   
+}

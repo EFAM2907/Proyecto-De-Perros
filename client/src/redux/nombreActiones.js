@@ -1,0 +1,9 @@
+export const ADD_DOG = 'ADD_DOG';
+export const ADD_DETAIL = 'ADD_DETAIL';
+export const ADD_DOG_BY_NAME = 'ADD_DOG_BY_NAME';
+export const ADD_TEMPERAMENT = 'ADD_TEMPERAMENT';
+export const CREATE_DOGS = 'CREATE_DOGS';
+export const ORDER_BY_NAME = 'ORDER_BY_NAME';
+export const ASC = 'ASC';
+export const DESC = 'DESC';
+export const FILTRAR_TEMPERAMENT = 'FILTRAR_TEMPERAMENT';

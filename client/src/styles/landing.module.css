@@ -1,0 +1,28 @@
+.title{
+    text-align: center;
+    text-shadow: 0 0 10px #fff, 0 0 20px rgb(255, 255, 255), 0 0 20px #494545a4, 0 0 30px #9b9a9a54,
+    0 0 30px #171718, 0 0 40px #5b5c5c52, 0 0 50px #737575;
+font-size: 3rem;}
+
+.subTitle{
+text-decoration: none;
+text-align: center;
+text-shadow: 0 0 10px #fff, 0 0 20px rgb(255, 255, 255), 0 0 20px #494545a4, 0 0 30px #9b9a9a54,
+0 0 30px #171718, 0 0 40px #5b5c5c52, 0 0 50px #737575;
+font-size: 2rem;}
+
+.navlink{
+    text-decoration: none;
+    color: black;
+    width: 300px;
+    cursor:url('../cursor_perrito_.png'), auto;
+}
+
+/* .fondo{
+    background-image: url('../fondo.jpg');
+  
+} */
+
+/* .fondo{
+    background-color: #25e2e9;
+} */
