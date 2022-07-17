@@ -8,7 +8,7 @@
   }
   
   .number {
-    color: black;
+    color: rgb(245, 229, 229);
     list-style: none;
     display: flex;
     flex-grow: initial;
@@ -36,7 +36,7 @@
   
   .img::before {
     content: "";
-      background: rgb(100, 136, 236);
+      background: rgb(22, 22, 22);
     background-size: 30px 30px;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;

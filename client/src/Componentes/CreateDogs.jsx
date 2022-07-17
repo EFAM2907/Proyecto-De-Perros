@@ -2,19 +2,65 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { AllTemperament } from '../redux/action'
 import {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
+import s from '../styles/Create.module.css'
+import {postDog} from '../redux/action'
+import Swal from 'sweetalert2'
+import{useHistory} from 'react-router-dom'
 
 function validar(input){
-    let error = {}
-        if(!input.nombre){
-            error.name = 'El nombre es requerido'
-        }
-        else if(!input.temperamentos.length){ 
-            error.temperament = 'Debe seleccionar al menos un temperamento'
-        }else if(input.temperamentos.length > 3){
-            error.maximo = 'Debe seleccionar como maximo 3 temperamentos😎'}
+
+  
+
+    let errors = {}
+
+      
+    if (!input.nombre || !/^[A-Z]+[A-Za-z0-9\s]+$/g.test(input.nombre)){
+        errors.name = 'Ingresa la Primera letra Mayuscula, Unicamente Letras y Numeros ';
+    }
+ 
+    if(!input.altura_min || !/^[1-9]\d*(\.\d+)?$/.test(input.altura_min)){
+        errors.altura_min = 'El valor Min tiene que ser numerico no se permite coma';
+    }
+    if(!input.altura_max || !/^[1-9]\d*(\.\d+)?$/.test(input.altura_max)){
+        errors.altura_max = 'El valor Max tiene que ser numerico no se permite coma';
+    }
+    if(input.altura_max <= input.altura_min){
+        errors.altura_min = 'Min no puede ser Mayor o Igual que Max';
+    }
+
+     
+    if(!input.peso_min || !/^[1-9]\d*(\.\d+)?$/.test(input.peso_min)){
+        errors.peso_min = 'El valor Min tiene que ser numerico no se permite coma';
+    }
+    if(!input.peso_max || !/^[1-9]\d*(\.\d+)?$/.test(input.peso_max)){
+        errors.peso_max = 'El valor Max tiene que ser numerico no se permite coma';
+    }
+    if(input.peso_max <= input.peso_min){
+        errors.peso_min = 'Min no puede ser Mayor o Igual que Max';
+    }
+
     
-    return error;
+    
+    
+    if (input.imagen && !/[a-z0-9-.]+\.[a-z]{2,4}\/?([^\s<>#%",{}\\|^[\]`]+)?$/.test(input.imagen) ){
+        errors.imagen = 'Debe ser una URL o estar vacio para tomar una Imagen por Defecto';
+    }
+    if (input.temperamentos.length <= 2){
+        errors.temperamentos = 'Se requieren al menos tres(3) Temperamentos';
+    }
+    return errors
 }
+    //     if(!input.nombre){
+    //         error.name = 'El nombre es requerido'
+    //     }
+    //     else if(!input.temperamentos.length){ 
+    //         error.temperament = 'Debe seleccionar al menos un temperamento'
+    //     }else if(input.temperamentos.length > 3){
+    //         error.maximo = 'Debe seleccionar como maximo 3 temperamentos😎'}
+    
+    // return error;
+
 
 
 export default function CreateDogs() {
@@ -22,20 +68,32 @@ export default function CreateDogs() {
     const dispatch = useDispatch()
     const temperament = useSelector(state=> state.temperament)
 
+       const history = useHistory()
+
     useEffect(() => {
         dispatch(AllTemperament())
     }, [dispatch])
 
     const [error, setError] = useState({})
+    const [button, setButton] = useState(false);
+
+    
 
     const [input, setInput] = useState({
-        nombre: '',
+        nombre: "",
+        peso_max: "",
+        peso_min: "",
         peso: "",
+        imagen: "",
+        altura_min: "",
+        altura_max: "",
         altura: "",
-        hp: "",
+         
+        años_vida: "",
         temperamentos: []
     })
 
+    //....
     function handleChange(e){
         setInput({
             ...input,
@@ -47,6 +105,7 @@ export default function CreateDogs() {
         }))
     }
 
+    //.....
     function handleSelect(e){
         setInput({
             ...input,
@@ -57,68 +116,96 @@ export default function CreateDogs() {
             temperamentos: [...input.temperamentos, e.target.value]
     }))}
 
+
+    //.....
+    function handleDelete(el){
+        setInput({
+            ...input,
+            temperamentos: input.temperamentos.filter(e=> e !== el)
+        })
+    }
+    //......
     function handleSubmit(e){
-         
-        let a = parseInt(input.peso)
-        let b = parseInt(input.altura)
-        let c = parseInt(input.hp)
-
-
-
-        if(error.nombre){
-            e.preventDefault()
-            //alert(error.name)
-            setError(validar({
-                ...input,
-            [e.target.name]: e.target.value
-            }))}
-
-        else if(!error.temperamentos.length || error.temperamentos.length > 3){
-            e.preventDefault()
-            setError(validar({
-                ...input,
-            [e.target.name]: e.target.value
-            }))}
- 
-    
+        e.preventDefault()
+        console.log(error)
+        if( input.nombre !== "" && !error.name && !error.temperamentos && !error.altura_min && !error.altura_max && !error.imagen && !error.peso_min && !error.peso_max){
+           
+            dispatch(postDog(input))
+          
+            Swal.fire(
+                'Bien Hecho',
+                'has Creado un Perrito',
+                'success'
+              )
+              history.push('/home')
+           
+        }else{
+            setError(validar(input))
+        }
     }
 
 
   return (
-    <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+   <div>
+            <h1 className={s.text}>SORPRENDEME...🐕</h1>
+      <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
           <div>
-                <label>Nombre</label>
-          <input type="text" value={input.name} name="nombre" onChange ={(e)=> handleChange(e)}/>
+                
+          <input placeholder='Nombre' type="text" value={input.name} name="nombre" onChange ={(e)=> handleChange(e)}/>
           {error.name && <span>{error.name}</span>} 
           </div>
-          {/* <div>
+          <div>
                 <label>Imagen</label>
           <input type="text" value={input.imagen} name="imagen" onChange ={(e)=> handleChange(e)}/>
-          </div> */}
+          {error.imagen && <span>{error.imagen}</span>} 
+
+          </div>
             <div>
-                <label>Peso</label>
-          <input type="text" value={input.peso} name="peso" onChange ={(e)=> handleChange(e)}/>
+                <label >Peso max</label>
+          <input  className={s.input} type="text" value={input.peso_max} name="peso_max" onChange ={(e)=> handleChange(e)} />
+              {error.peso_max && <span>{error.peso_max}</span>}kg
+          
+
             </div>
             <div>
-                <label>Altura</label>
-            <input type="text" value={input.altura} name="altura" onChange ={(e)=> handleChange(e)}/>
+                <label >Peso min</label>
+          <input  className={s.input} type="text" value={input.peso_min} name="peso_min" onChange ={(e)=> handleChange(e)}/>
+              {error.peso_min && <span>{error.peso_min}</span>}kg  
+            </div>
+            
+            <div>
+                <label>Altura +</label>
+            <input className={s.input} type="text" value={input.altura_max} name="altura_max" onChange ={(e)=> handleChange(e)}/>
+            {error.altura_max && <span>{error.altura_max}</span>} cm
+
             </div>
             <div>
-                <label>HP</label>
-            <input type="text" value={input.hp} name="hp" onChange ={(e)=> handleChange(e)}/>
+                <label>Altura -</label>
+            <input className={s.input} type="text" value={input.altura_min} name="altura_min" onChange ={(e)=> handleChange(e)}/>
+            {error.altura_min && <span>{error.altura_min}</span>} cm
+
             </div>
             <div>
-                <label>Temperamentos</label>
+                <label>vida</label>
+            <input type="text" value={input.años_vida} name="años_vida" onChange ={(e)=> handleChange(e)}/>
+
+            </div>
+            <div>
+                <label >Temperamentos</label>
             <select  name="temperamentos" onChange={(e)=> handleSelect(e)} >
                 {temperament.map(e => (
                     <option key={e.id} value={e.nombre}>{e.nombre}</option>
                 ))}
             </select>
-            {error.temperament && <span>{error.temperament}</span>}
-            {error.maximo && <span>{error.maximo}</span>}
+            <ul className={s.ul}><li className={s.lista}>{input.temperamentos.map(el=> <button className={s.botonTemp} type='button' key={el.id} onClick={()=>handleDelete(el)}>{el}</button>)}</li></ul>
+
+            {error.temperamentos && <span>{error.temperamentos}</span>}
+            
             </div>
-            <button type="submit" >Crear</button>
+            <div>
+            <button  type="submit" >Crear</button>
+            {button && <p>bien hecho rey</p>}
+            </div>
       </form>
 
     </div>

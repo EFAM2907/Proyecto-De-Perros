@@ -8,9 +8,14 @@ import {
  ADD_TEMPERAMENT,
  CREATE_DOGS,
  ORDER_BY_NAME,
-    ASC,
-    DESC,
-    FILTRAR_TEMPERAMENT
+    FILTRAR_TEMPERAMENT,
+    FILTRAR_PESO,
+    POST_DOG,
+    FILTRAR_RAZA,
+    TRAER_RAZAS,
+    RE_DETAIL,
+    DELETE
+
  
 } from './nombreActiones';
 
@@ -18,11 +23,8 @@ import {
      return (dispatch) => {
          const res = axios.get('http://localhost:3001/dogs');
             res.then(response => {
-                dispatch({
-                    type: ADD_DOG,
-                    payload: response.data
-                });
-            });
+                dispatch({type: ADD_DOG,  payload: response.data })})
+     
         }
  }
 
@@ -53,19 +55,7 @@ export function AllTemperament(){
         }
     }
 
-    export function orderASC(payload){
-        return{
-            type: ASC,
-            payload: payload
-        }
-    }
-
-    export function orderDESC(payload){
-        return{
-            type: DESC,
-            payload: payload
-        }
-    }
+ 
 
     export function ordenarPorNombre(payload){
         return{
@@ -80,3 +70,47 @@ export function AllTemperament(){
             payload
         }
     }
+
+    export function filtrarPorRaza(payload){
+        return{
+            type: FILTRAR_RAZA,
+            payload
+        }
+    }
+
+    // cambiar nombre ordenarPoraza
+    export function OrdenarPorPeso(payload){
+        return{
+            type: FILTRAR_PESO,
+            payload
+        }}
+
+    export function postDog(payload){
+        return async(dispatch) => {
+            const res = await axios.post('http://localhost:3001/dogs', payload);
+                dispatch({type: POST_DOG, payload: res.data})
+        }}
+
+
+        export function traerRazas(){
+            return async(dispatch) => {
+            const res = await axios.get('http://localhost:3001/dogs')
+            const razas = res.data.map(dog => {return{nombre: dog.nombre}})
+           dispatch({type: TRAER_RAZAS, payload: razas })
+
+            }
+        }
+
+
+        export function removerDetalle(){
+            return{
+                type:RE_DETAIL,
+                
+            }
+        }
+
+        export function deleteDog(id){
+            return async(dispatch) => {
+                const res = await axios.delete(`http://localhost:3001/dogs/${id}`);
+                dispatch({type: DELETE, payload: res.data})}
+            }

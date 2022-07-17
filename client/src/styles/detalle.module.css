@@ -1,24 +1,23 @@
 .margin{
-    height: 630px;
+ 
     display: block;
     margin:auto;
-    width: 900px;
-    margin-top: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgb(8, 8, 8), 0 0 20px rgb(7, 7, 7), 0 0 30px #737474, 0 0 10px #9a9e9e,
-    0 0 10px #939797, 0 0 10px #337ec9, 0 0 10px #757373;
-   
+    width: 1200px;
+    margin-top: 70px;
+    margin-bottom:70px;
+    border-radius: 3px;
+
+    color: rgb(13, 13, 14);
+    /* background-color: rgb(56, 59, 61); */
+    /* border: 1px solid rgba(0, 0, 0, 0.411) */
+    box-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #a89ca2, 0 0 10px #9177ee,
+    0 0 5px #888084, 0 0 5px #f3cbdf, 0 0 5px #949192;   
 }
-.margin:hover {
-    transform: scale(1.02);
-    /* cursor:url('../cursor_perrito.png'), auto; */
-  }
-  .margin::after {content: "";background: rgb(220, 220, 220, 200); opacity: 0.5; top: 0; left: 0; bottom: 0; right: 0; position: absolute; z-index: -1; }
+
 
 .title{
     font-style: italic;
-    text-shadow: 0 0 10px rgb(228, 210, 210), 0 0 20px rgb(27, 27, 27), 0 0 30px #131212, 0 0 10px #1a1819,
-    0 0 10px #252525, 0 0 10px #c0b0b8, 0 0 10px #252425;;
+ 
     margin-bottom: 0;
     padding: 20px;
 }
@@ -28,7 +27,8 @@
   
     .dogImage{
 
-    border-radius: 20px;
+    border-radius: 5px;
+    border: 12px solid #282828;
   
   }
 
@@ -52,6 +52,7 @@ justify-content: center;
 }
 
 .peso{ 
+ 
     display: flex;
  flex-flow: row;
  align-items: center;
@@ -79,38 +80,30 @@ margin-block-end: unset;
 }
 
 .boton{
-    width: 200px;
+   display: flex;
+    width: 130px;
     margin: 20px;
     text-decoration: none;
     padding: 10px;
     font-weight: 800;
     font-size: 20px;
-    color: #ffffff;
-    background-color: burlywood;
-    border-radius: 6px;
-    border: 2px solid #8d7248;
+    color: #0f0f0f;
+    background-color: rgba(179, 38, 192, 0.548);
+    border-radius: 30px;
+    border: 2px solid #290391;
+    cursor: pointer;
   }
   
   .boton:hover{
-    color: #3c3d15bb;
-    background-color: #f5e2a4;
+    color: #c92424bb;
+    background-color: #b65970;
     }
- .link {
-    font-style: italic;
-    position: absolute;
-    left: 50px;
-    top: 12px;
-    text-decoration: none;
-    margin-left: 0.5rem;
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-    border: rgb(68, 67, 67) 1px solid;
-    border-radius: 5%;
-    color: rgb(10, 10, 10);
-    border-radius: 5px;
+ 
+ .grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+.deta{
+  margin-top:122px
 }
-
-
-/* .fondo{
-    background-color: #9ca0a0;
-} */

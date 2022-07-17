@@ -10,7 +10,7 @@ router.get('/', async(req, res) => {
         if(name){
             const info = infoDogs.filter(e => e.nombre.toLowerCase().includes(name.toString().toLowerCase()));
           
-           info.length > 0 ? res.json(info) : res.json('🐱‍👤No se encontro el Nombre de tu perro🐶');
+           info.length > 0 ? res.json(info) : res.json(['No se encontro el Nombre de tu perro🐶']);
          
 
         }
@@ -43,9 +43,9 @@ router.get('/:id', async(req, res) => {
 
 
 router.post('/', async(req, res)=>{
-    const {nombre, altura, peso, años_vida, temperament, imagen} = req.body;
+    const {nombre, altura_max,altura_min, peso_max,peso_min, años_vida, temperamentos, imagen} = req.body;
 
-    const newDog = {nombre, altura, peso, años_vida, imagen};
+    const newDog = {nombre, altura_max,altura_min,peso_max,peso_min, años_vida, imagen};
     try{
         const info = await Dog.create(newDog);
         res.json(info);

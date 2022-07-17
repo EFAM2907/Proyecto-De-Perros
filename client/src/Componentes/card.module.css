@@ -20,14 +20,53 @@
 
 } */
 
-.margin{
-    height: 470px;
-    display: block;
-    margin:auto;
-    width: 500px;
+ .margin{
+    color:  rgb(61, 169, 252);
+    height: 20rem;
+    width: 15rem;
+    background-color: rgb(4, 30, 47);
+    padding: 1rem;
     margin-top: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgb(8, 8, 8), 0 0 20px rgb(7, 7, 7), 0 0 30px #737474, 0 0 10px #9a9e9e,
-    0 0 10px #939797, 0 0 10px #337ec9, 0 0 10px #757373;
+    border-radius: 3px;
+
+
+}
+.margin:hover{
+    transform: scale(1.09); 
+}
+.h1{
+    font-size: 30px
+}
    
+
+
+.img{
+   
+    border-radius: 4px;
+    
+}
+
+.tamaño{
+    font-size: 102px;
+}
+
+.boton{
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    background: rgb(83, 173, 214);
+    bottom: 32px;
+    border-radius: 100%;
+    box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
+    display: flex;
+    fill: rgb(255, 255, 255);
+    height: 56px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: fixed;
+    right: 32px;
+    transform: scale(1);
+    transition: transform 0.3s ease 0s;
+    width: 56px;
+    z-index: 999
 }

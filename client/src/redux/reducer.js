@@ -7,14 +7,26 @@ import {
     ORDER_BY_NAME,
     ASC,
     DESC,
-    FILTRAR_TEMPERAMENT
+    FILTRAR_TEMPERAMENT,
+    FILTRAR_PESO,
+    POST_DOG,
+    FILTRAR_RAZA,
+    TRAER_RAZAS,
+    RE_DETAIL,
+    DELETE
 } from './nombreActiones'
 
 
 const initialState={ 
      perros:[],
+     allPerros:[],
         detailDogs:[],
         temperament:[],
+        FiltroRaza:[],
+        FiltroTemper:[],
+   
+       
+      
         
 }
 
@@ -24,6 +36,9 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 perros: action.payload,
+                allPerros: action.payload,
+                FiltroTemper: action.payload
+              
        }
     }
     case ADD_DETAIL:{
@@ -46,63 +61,100 @@ const rootReducer = (state = initialState, action) => {
     case ADD_DOG_BY_NAME:{
         return{
             ...state,
-            perros: action.payload,
+            allPerros: action.payload,
     }}
     case ORDER_BY_NAME:{
-        let ordenamiento = action.payload === ASC ? state.perros.sort((a,b) =>  { 
-            if(a.name > b.name){
+        console.log(action.payload === DESC) 
+        let ordenamiento = action.payload === "ASC" ?
+         state.perros.sort((a,b) =>  { 
+            if(a.nombre.toLowerCase() > b.nombre.toLowerCase()){
+               
             return 1
         }
-        if(a.name < b.name){
+        if(a.nombre.toLowerCase()< b.nombre.toLowerCase()){
             return -1
         }
         return 0
-    }) : state.perros.sort(function(a,b){
-        if(a.name > b.name){
+    })
+     : state.perros.sort(function(a,b){
+        if(a.nombre.toLowerCase() > b.nombre.toLowerCase()){
+        
             return -1
         }
-        if(a.name < b.name){
+        if(a.nombre.toLowerCase() < b.nombre.toLowerCase()){
             return 1
         }
         return 0
     })
+
+   
     
         return{
             ...state,
             perros: ordenamiento,
         }}
     case FILTRAR_TEMPERAMENT:{
-        // let dogs = state.perros
-        // let filtro = action.payload === ""? dogs : dogs.filter(dog =>  {
-        //     return  dog.temperament.includes(action.payload)})
-        //     console.log(filtro)
-        
-        let dogs = state.perros
-        let filtro = action.payload === ""? dogs : dogs.filter(dog =>  {
-            return  dog.temperamentos.includes(action.payload)})
-            console.log(filtro)
+        let allPerros = state.FiltroTemper
+        let filtro = action.payload === ""? allPerros : allPerros.filter(dog =>  {
+            return  dog.temperamentos?.includes(action.payload)})
             return{
                 ...state,
-                perros: filtro,
+                allPerros: filtro,
         }
     }
-    
+   case TRAER_RAZAS:{
+         
+        return{
+            ...state,
+            FiltroRaza: action.payload        
+            ,}}
+
+    case FILTRAR_RAZA:{
         
-    case ASC:{
-        return {
-          ...state,
-          perros: state.perros.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
-      }}
+        let allPerros = state.perros
+        let filtroR = action.payload === ""? allPerros : allPerros.filter(dog =>  {
+            //console.log(dog.nombre)
+            return dog.nombre?.includes(action.payload)})
+         
+            return{
+                ...state,
+                allPerros: filtroR,}}
 
 
-      case DESC:{
-       return{
-          ...state,
-          perros: state.perros.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0))
-       }}
+    
+    case FILTRAR_PESO:{
+        let perros = state.perros
+        let filtroP = action.payload === "pesoASC"?  perros.sort((a, b)=>{
+            return a.peso_min - b.peso_min
+        }) : perros.sort((a, b)=>{
+            return b.peso_max - a.peso_max
 
+        })
+            return{
+                ...state,
+                perros: filtroP,
+            }
+        
+    }
+    case POST_DOG:{
+        return{
+            ...state,
+    }}
 
-    default:{
+    case RE_DETAIL:{
+        return{
+            ...state,
+            detailDogs: ''
+        }}
+        case DELETE:{
+            return{
+                ...state,
+                detailDogs: []
+        }}
+
+  
+
+     default:{
         return state;
     }
 }}

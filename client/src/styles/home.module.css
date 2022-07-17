@@ -1,27 +1,4 @@
-.AllCards{
-    display: flex;
-    flex-wrap: wrap;
-}
 
-.containerCards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    background-color: #d18282;
-    margin: 50px;
-    row-gap: 3rem;
-    border-radius: 20px;
-  }
-  
-  .dogsGrid{
-   display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* background-color: #30bb81; */
-    margin: 10px;
-    row-gap: 3rem;
-    border-radius: 20px;
-  
-  
-}
 
 .paginado{
     display: flex;
@@ -32,3 +9,80 @@
     justify-content: space-evenly;
    
 }
+
+
+  
+ 
+    
+
+.todo{
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfB6R0g8YP309afvvj61dqoLblYtyrgqJH2Q&usqp=CAU');
+    background-size: cover; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 0px 20px;
+    /* position: fixed;
+    left: 0;
+    top: 100px; */
+
+    @media screen and (max-width: 600px) {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+   
+}
+ 
+
+.volver{
+    display: flex;
+    justify-content: center;
+    
+    color: #080808;
+}
+
+
+
+
+
+
+.gif{
+    background-image: url('../gif.jpg');
+    width: 100%;
+}
+
+
+
+
+  .sel{
+    margin:0px;
+  }
+
+  .size{
+ 
+    display: grid;
+    grid-template-columns: repeat(3, 310px);
+    gap: 1rem;
+    line-height: 0;
+    margin-top: 26px;
+    margin-left: 30px;
+
+
+  }
+
+  .select{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(4, 30, 47);
+    border-radius: 8px;
+    padding: 10px;
+    color: rgb(61, 169, 252);
+    margin-top: 46px;
+   
+    
+  }
+
+   
+   
+  
+  

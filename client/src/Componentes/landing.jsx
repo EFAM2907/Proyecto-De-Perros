@@ -2,15 +2,18 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import style from '../styles/landing.module.css'
 import logo from '../dog.png'
+import a from '../styles/landing.module.css'
 
 export default function landing() {
   return (
     <div className={style.fondo}>
-        <h1 className={style.title}>Bienvendo a tu pagina de Perreo😎</h1>
-        <NavLink className={style.navlink} to='/home'>
-          <h4 className={style.subTitle}>Bienvendo</h4>
-        <img src={logo} alt="img not found"/>
-        </NavLink>
+      <h1>tu mascota</h1>
+      <p className={a.parrafo}>♡ Los perros son como ángeles a los que Dios en vez de alas, les dio cuatro patas y los puso en el mundo para enseñar amor.
+ A veces el amor más sincero, se oculta detrás del silencio más profundo. Un ejemplo: Mi perro.
+ Soy un afortunado, lo comprendo cuando siento que me siguen 4 patitas por toda la casa.
+"Nunca he podido decirte que te quiero, pero siempre trato de demostrártelo". Tal parece que eso está escrito en los ojos de mi perro.</p>
     </div>
+    
+
   )
 }
