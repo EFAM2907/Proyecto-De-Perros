@@ -14,8 +14,8 @@ const getApiDogs = async () => {
              
             if(e.temperament != undefined) {
                 
-                temperaments = e.temperament.split(", ").join(", ")
-
+                temperaments = e.temperament
+                
                 
             }
             
@@ -35,11 +35,11 @@ const getApiDogs = async () => {
                       ? e.weight.metric.split(" - ")[0]
                       : 6,
                     
-                    peso: e.weight,
+                    peso: e.weight.metric,
                     // peso_max_min: e.weight.metric,
                     años_vida: e.life_span,
                     temperamentos: temperaments,
-                    temper : e.temperament,
+                    // temper : e.temperament,
                     imagen: e.image.url,
               }
           })
@@ -85,9 +85,11 @@ const getTemperaments = async () => {
         const info4= [...info3]
         //  console.log(info4);
         const info5 = info4.map(e => {return{nombre: e}})   
-     
+         
+       
    
       await Temperament.bulkCreate(info5);
+    
      // console.log(crear);
         ;
         
