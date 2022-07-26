@@ -1,11 +1,122 @@
-
-.container{
-  display:flex;
-  flex-direction:column;
-  padding:15px;
-  row-gap: 12px;
+.grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
+
+.container{
+  display: flex;
+    flex-direction: column;
+    background-color: rgb(4, 30, 47);
+    border-radius: 8px;
+    padding: 10px;
+    color: rgb(61, 169, 252);
+    margin-top: 46px;
+    width:600px;
+    margin-right: 300px;
+ 
+ 
+}
+.img{
+  margin-right: 150px;
+}
+.nombre{
+  max-width: 100%;
+  padding: 5px 20px;
+  background: rgb(244, 244, 248);
+  margin-bottom: 0.9rem;
+  border-radius: 4px;
+  outline: 0px;
+  border: 1px solid rgba(245, 245, 245, 0.7);
+  font-size: 14px;
+  transition: all 0.3s ease-out 0s;
+  box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
+  text-align: center;
+}
+
+.input{
+  max-width: 100%;
+  padding: 6px 100px;
+  background: rgb(254, 254, 255);
+  margin-bottom: 0.9rem;
+  border-radius: 4px;
+  outline: 0px;
+  border: 1px solid rgba(245, 245, 245, 0.7);
+  font-size: 14px;
+  transition: all 0.3s ease-out 0s;
+  box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
+  text-align: center;  
+
+}
+
+.selects{
+  max-width: 100%;
+  padding: 5px 5px;
+  background: rgb(225, 225, 245);
+  margin-bottom: 0.9rem;
+  border-radius: 4px;
+  outline: 0px;
+  border: 1px solid rgba(245, 245, 245, 0.7);
+  font-size: 14px;
+  transition: all 0.3s ease-out 0s;
+  box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
+  text-align: center; 
+  width: 120px;
+  margin-left:230px
+  
+}
+
+.pesos{
+  max-width: 100%;
+  padding: 5px 5px;
+  background: rgb(225, 225, 245);
+  margin-bottom: 0.9rem;
+  border-radius: 4px;
+  outline: 0px;
+  border: 1px solid rgba(245, 245, 245, 0.7);
+  font-size: 14px;
+  transition: all 0.3s ease-out 0s;
+  box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
+  text-align: center;  
+
+}
+
+.containerPesos{
+  display:flex;
+  justify-content:center
+}
+
+.containerAltura{
+  display:flex;
+  justify-content:center
+}
+
+.altura{
+  max-width: 100%;
+  padding: 5px 5px;
+  background: rgb(225, 225, 245);
+  margin-bottom: 0.9rem;
+  border-radius: 4px;
+  outline: 0px;
+  border: 1px solid rgba(245, 245, 245, 0.7);
+  font-size: 14px;
+  transition: all 0.3s ease-out 0s;
+  box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
+  text-align: center; 
+}
+
+.vida{
+  padding: 5px 5px;
+  background: rgb(225, 225, 245);
+  margin-bottom: 0.9rem;
+  border-radius: 4px;
+  outline: 0px;
+  border: 1px solid rgba(245, 245, 245, 0.7);
+  font-size: 14px;
+  transition: all 0.3s ease-out 0s;
+  box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
+  text-align: center; 
+}
 
 
 

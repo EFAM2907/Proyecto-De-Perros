@@ -7,11 +7,12 @@ import s from '../styles/Create.module.css'
 import {postDog} from '../redux/action'
 import Swal from 'sweetalert2'
 import{useHistory} from 'react-router-dom'
-import {Formik, Field, Form} from 'formik'
+import {Formik, Field, Form, ErrorMessage} from 'formik'
 
 export default function CreateDogs(){
 
     const dispatch = useDispatch()
+    const history =  useHistory()
 
 
     useEffect(() => {
@@ -48,61 +49,167 @@ export default function CreateDogs(){
         años_vida: "",
      }
     }
+
+    validate ={(value)=>{
+
+            let errors = {}
+
+      
+    if (!value.nombre || !/^[A-Z]+[A-Za-z0-9\s]+$/g.test(value.nombre)){
+        errors.nombre = 'Ingresa la Primera letra Mayuscula, Unicamente Letras y Numeros ';
+    }
+ 
+    if(!value.altura_min || !/^[1-9]\d*(\.\d+)?$/.test(value.altura_min)){
+        errors.altura_min = 'El valor Min tiene que ser numerico no se permite coma';
+    }
+    if(!value.altura_max || !/^[1-9]\d*(\.\d+)?$/.test(value.altura_max)){
+        errors.altura_max = 'El valor Max tiene que ser numerico no se permite coma';
+    }
+    if(value.altura_max <= value.altura_min){
+        errors.altura_min = 'Min no puede ser Mayor o Igual que Max';
+    }
+
+     
+    if(!value.peso_min || !/^[1-9]\d*(\.\d+)?$/.test(value.peso_min)){
+        errors.peso_min = 'El valor Min tiene que ser numerico no se permite coma';
+    }
+    if(!value.peso_max || !/^[1-9]\d*(\.\d+)?$/.test(value.peso_max)){
+        errors.peso_max = 'El valor Max tiene que ser numerico no se permite coma';
+    }
+    if(value.peso_max <= value.peso_min){
+        errors.peso_min = 'Min no puede ser Mayor o Igual que Max';
+    }
+
+    
+    
+    
+    if (value.imagen && !/[a-z0-9-.]+\.[a-z]{2,4}\/?([^\s<>#%",{}\\|^[\]`]+)?$/.test(value.imagen) ){
+        errors.imagen = 'Debe ser una URL o estar vacio para tomar una Imagen por Defecto';
+    }
+    // if (input.temperament.length <= 2){
+    //     errors.temperamentos = 'Se requieren al menos tres(3) Temperamentos';
+    // }
+    return errors
+}
+     
+
+
+    }
+
+    onSubmit ={(valor)=>{
+       console.log("estos son los valores",valor)
+        dispatch(postDog(valor,input))
+        Swal.fire(
+           'Bien Hecho',
+           'has Creado un Perrito',
+           'success'
+             )
+             history.push('/home')
+    }}
+
+    
+
     >
        
        
 
    
-        {(props) => ( 
+        {({errors}) => ( 
         <Form>
+            <div className={s.grid}>
+                <div>
+                    <img className={s.img} src="https://http2.mlstatic.com/D_NQ_NP_716231-MLM46455798737_062021-O.jpg" alt="..." width='200px' />
+                </div>
        <div className={s.container}>
 
          <div>
           <Field
+          className={s.nombre}
           type="text"
           name="nombre" 
           placeholder="Nombre"/>
-         </div>
 
+         <ErrorMessage
+         name="nombre"
+         component={() => <div>{errors.nombre}</div> }
+          />
+         </div>
+      URL
         <div>
          <Field 
+         className={s.input}
          type="text"
          name="imagen" 
          placeholder="imagen"/>
+          
+        <ErrorMessage
+         name="imagen"
+         component={() => <div>{errors.imagen}</div> }
+          />
         </div>
 
-        <div>
+            Pesos
+        <div className={s.containerPesos}>
          <Field 
-         type="text"
+         
+         className={s.pesos}
+         type="number"
          name="peso_max" 
-         placeholder="peso maximo"/>
+         placeholder="peso maximo"/>⚖
+         
+
+          <ErrorMessage
+         name="peso_maximo"
+         component={() => <div>{errors.peso_maximo}</div> }
+          />
 
          <Field 
-         type="text"
+         className={s.pesos}
+         type="number"
          name="peso_min" 
          placeholder="peso minimo"/>
-        </div>
 
-       <div>
+        </div>
+        <ErrorMessage
+         name="peso_min"
+         component={() => <div>{errors.peso_min}</div> }
+          />
+        Altura
+       <div className={s.containerAltura}>
          <Field 
+         className={s.altura}
          type="text"
          name="altura_max" 
-         placeholder="altura maxima"/>
+         placeholder="altura maxima"/>🐾
+
+         <ErrorMessage
+         name="altura_max"
+         component={() => <div>{errors.altura_max}</div> }
+          />
+        
         
          <Field 
+         className={s.altura}
          type="text"
          name="altura_min" 
          placeholder="altura minima"/>
+
       </div>
+        <ErrorMessage
+         name="altura_min"
+         component={() => <div>{errors.altura_min}</div> }
+          />
 
        <div>
          <Field 
+         className={s.vida}
          type="text"
          name="años_vida" 
          placeholder="años de vida"/>
+
       </div>
 
-        <Field name='temperament' as='select' onchange={(e)=>{handleSelect(e)}}>
+        {/* <Field name='temperament' as='select' onchange={(e)=>{handleSelect(e)}}>
             {Temper.map(e => (
                      <option key={e.id} value={e.nombre}>{e.nombre}</option>)) }
 
@@ -111,14 +218,20 @@ export default function CreateDogs(){
                             {input.temperament.map(e => <button type="button">{e}</button>) }
                             {console.log("soy", input.temperament)}
                         </li>
-                     </ul>
-                     
+                     </ul> */}
+        {/* </Field> */}
 
-        </Field>
+        <label >Temperamentos</label>
+            <select  name="temperament" onChange={(e)=> handleSelect(e)} className={s.selects}>
+                {Temper.map(e => (
+                    <option key={e.id} value={e.nombre}>{e.nombre}</option>
+                ))}
+            </select>
+            <ul><li >{input.temperament.map(el=> <button  type='button' key={el.id} >{el}</button>)}</li></ul>
 
+         <button className={s.env} type="submit">enviar</button>
        </div>
-
-       <button type="submit">enviar</button>
+</div>
     </Form>
         )}
 
