@@ -44,9 +44,10 @@ router.get('/:id', async(req, res) => {
 
 
 router.post('/', async(req, res)=>{
-    const {nombre,altura, altura_min,altura_max, peso,peso_max,peso_min, años_vida, temperamentos, imagen} = req.body;
+    const {nombre, altura_min,altura_max, peso,peso_max,peso_min, años_vida, temperamentos, imagen} = req.body;
 
-    const newDog = {nombre, altura,altura_min,altura_max,peso,peso_max,peso_min, años_vida, imagen};
+    console.log(req.body);
+    const newDog = {nombre, altura_min,altura_max,peso,peso_max,peso_min, años_vida, imagen};
     try{
         const info = await Dog.create(newDog);
         
