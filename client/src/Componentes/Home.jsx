@@ -67,6 +67,7 @@ export default function Home() {
   function handleFilterTemperament(e) {
       e.preventDefault()
       dispatch(filtrarPorTemperamento(e.target.value))
+      setPagina(1)
      
     }
 
@@ -75,6 +76,7 @@ export default function Home() {
     function handleFilterRaza(e) {
       e.preventDefault()
       dispatch(filtrarPorRaza(e.target.value))
+      setPagina(1)
 
      
   }

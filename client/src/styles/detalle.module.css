@@ -107,3 +107,41 @@ margin-block-end: unset;
 .deta{
   margin-top:122px
 }
+
+.button{
+  border-radius: 3px;
+
+}
+.button:hover{
+  color: #f1f1f7bb; 
+  background-color: #e48a8a;
+}
+.volver{
+  border-radius: 3px;
+  margin-left: 10px;
+
+
+
+}
+.volver:hover{
+  color: #edecf7bb; background-color: #282828;
+}
+
+.volver2{
+  border-radius: 3px;
+  margin-left: 10px;
+  margin-top: 5px;
+
+
+}
+.volver2:hover{
+  color: #5553acbb;
+  transform: scale(1.1);
+}
+
+
+.botones{
+  padding-top:15px;
+  display: flex;
+  justify-content:center
+}

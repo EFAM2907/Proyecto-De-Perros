@@ -39,17 +39,30 @@ export default function DetailDog() {
         }
   }
 
+  function Volver(){
+    history.push('/home')
+  }
+
 
 
   return (
       <div >
-
-        
+     <div>
     <div className={a.margin}>
  
-    
-           <div>
+           
+            
+
+            
                {
+               id.includes('-')?
+               <div>
+                <div className={a.botones} >
+               <button className={a.button} onClick={handleDelete}>Eliminar🚫</button>
+               <button className={a.volver} onClick={Volver}>Volver🐾</button></div>
+               {
+
+               
                    detalles[0]? detalles.map(e => 
                     (     <div className={a.grid}>
                         <div>
@@ -72,6 +85,35 @@ export default function DetailDog() {
                     )
                     )
                     : <img src={'http://www.canalgif.net/Gifs-animados/Animales-terrestres/Perros/Imagen-animada-Perro-06.gif'} alt="nada"   width="400" height="200"/>
+                    }  </div>:<div>
+                    <button className={a.volver2}onClick={Volver}>Volver🐾</button>
+
+                    {
+
+               
+                        detalles[0]? detalles.map(e => 
+                         (     <div className={a.grid}>
+                             <div>
+                               <h1 className={a.title}>{e.nombre}</h1>
+                                <img className={a.dogImage} src={e.imagen} alt={e.nombre} width='500' height='400'/>
+     
+                             </div>
+     
+     
+                            <div className={a.deta} key={e.id}>
+                                 
+                             
+                                 <h3 className={a.title}>PESO:  {e.peso ? e.peso : `${e.peso_min}-${e.peso_max}`} Kg</h3>
+                                 <h3 className={a.title}>ALTURA:  {e.altura ? e.altura : `${e.altura_min}-${e.altura_max}`} Centimetros  </h3>
+                                 <h3 className={a.title}>Años De Vida:</h3>
+                                 <h4 >{e.años_vida}</h4>
+                                 <h2 className={a.title}>Temperamentos:</h2>
+                                 <p> 🐶{e.temperamentos ? e.temperamentos : e.Temperaments?.map(e => e.nombre).join(',')}🐕</p>
+                             </div></div>
+                         )
+                         )
+                         : <img src={'http://www.canalgif.net/Gifs-animados/Animales-terrestres/Perros/Imagen-animada-Perro-06.gif'} alt="nada"   width="400" height="200"/>
+                         } </div> 
 
                }
            </div>

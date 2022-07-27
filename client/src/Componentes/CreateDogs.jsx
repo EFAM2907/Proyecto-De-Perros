@@ -22,15 +22,15 @@ export default function CreateDogs(){
     const Temper = useSelector(state => state.temperament)
     console.log('estos son  los', Temper)
 
-    const[input, setInput] = useState({
-        temperament:[]
-    })
+    // const[input, setInput] = useState({
+    //     temperament:[]
+    // })
 
-    function handleSelect(e) {
-        setInput({
-            temperament: [...input.temperament, e.target.value]
-        })
-    }
+    // function handleSelect(e) {
+    //     setInput({
+    //         temperament: [...input.temperament, e.target.value]
+    //     })
+    // }
 
 
     return(
@@ -98,7 +98,7 @@ export default function CreateDogs(){
 
     onSubmit ={(valor)=>{
        console.log("estos son los valores",valor)
-        dispatch(postDog(valor,input))
+        dispatch(postDog(valor))  
         Swal.fire(
            'Bien Hecho',
            'has Creado un Perrito',
@@ -221,15 +221,15 @@ export default function CreateDogs(){
                      </ul> */}
         {/* </Field> */}
 
-        <label >Temperamentos</label>
+        {/* <label >Temperamentos</label>
             <select  name="temperament" onChange={(e)=> handleSelect(e)} className={s.selects}>
                 {Temper.map(e => (
                     <option key={e.id} value={e.nombre}>{e.nombre}</option>
                 ))}
             </select>
-            <ul><li >{input.temperament.map(el=> <button  type='button' key={el.id} >{el}</button>)}</li></ul>
+                <ul><li >{input.temperament.map(el=> <button  type='button' key={el.id} >{el}</button>)}</li></ul>*/}
 
-         <button className={s.env} type="submit">enviar</button>
+         <button className={s.button} type="submit">enviar</button> 
        </div>
 </div>
     </Form>
