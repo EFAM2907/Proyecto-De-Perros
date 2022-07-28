@@ -1,0 +1,30 @@
+.boton{
+    align-items: center;
+    cursor: pointer;
+    align-items: center;
+    cursor: pointer;
+    bottom: 20px;
+    border-radius: 100%;
+    box-shadow: rgb(0 0 0 / 15%) 0px 12px 24px 0px;
+    display: flex;
+    fill: rgb(255, 255, 255);
+    height: 56px;
+    justify-content: center;
+    /* position: fixed; */
+    right: 424px;
+    transform: scale(1);
+    transition: transform 0.3s ease 0s;
+    width: 56px;
+    z-index: 1019;
+    margin-left: 9px;
+}
+
+.contain{
+    display:flex;
+    margin: 10px;
+
+}
+
+.boton:hover {
+    transform: scale(1.09);
+  }

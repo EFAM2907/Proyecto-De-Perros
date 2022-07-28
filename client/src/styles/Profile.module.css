@@ -1,10 +1,39 @@
 .avatar {
-    width: 10%;
-    height: 10%;
-    border-radius: 3px;
-    object-fit: cover;
+  height: 80px;
+  margin: 5px;
+
+  background-color: #fff;
+  border-radius: 3px;
   }
 
   .container{
-    margin-top:40px
+    margin-top:40px;
+    margin:20px
+    
+  }
+
+  .linkedin{
+    height: 60px;
+    margin: 5px;
+  
+    background-color: #fff;
+    border-radius: 3px;
+  }
+
+  .boton{
+    width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    border:none;
+    transition:2s;
+    margin-top: 20px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration: none;
+    background-color:rgb(5, 113, 236);
+    color: #fff;
+    margin-top: 50px;
+    margin-left: 335px;
+
   }

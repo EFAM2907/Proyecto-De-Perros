@@ -5,7 +5,6 @@ import Home from './Componentes/Home';
 import detailDog from './Componentes/detailDog';
 import CreateDogs from './Componentes/CreateDogs';
 import Nav from './Componentes/Nav';
-import Icono from '../src/Componentes/IconoChat/Icono'
 import Perfil from '../src/Componentes/perfil'
 import './App.css';
 
@@ -18,7 +17,6 @@ function App() {
       <Route exact path="/home" component={Home}/>
       <Route exact path="/detail/:id" component={detailDog}/>
       <Route exact path="/create" component={CreateDogs}/>
-      <Route exact path="/icono" component={Icono}/>
       <Route exact path="/perfil" component={Perfil}/>
 
 

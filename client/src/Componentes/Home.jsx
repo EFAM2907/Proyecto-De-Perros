@@ -8,7 +8,6 @@ import SearchBar  from './Search'
 import { useState } from 'react'
 import Paginado from './paginacion/paginado'
 import a from '../styles/home.module.css'
-import Icono from '../Componentes/IconoChat/Icono'
 
 import { ASC,DESC } from '../redux/nombreActiones'
 
@@ -110,7 +109,7 @@ export default function Home() {
    <div >
       
 
-          <Icono />
+          
     <div  className={a.todo}>
       <div >
       <SearchBar/>

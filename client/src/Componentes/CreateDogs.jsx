@@ -8,6 +8,7 @@ import {postDog} from '../redux/action'
 import Swal from 'sweetalert2'
 import{useHistory} from 'react-router-dom'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
+import BotonHome from '../Componentes/IconoHome/BotonHome'
 
 export default function CreateDogs(){
 
@@ -36,7 +37,6 @@ export default function CreateDogs(){
     return(
    
     <Formik
-     
     initialValues={
        { nombre: "",
         peso_max: "",
@@ -116,6 +116,8 @@ export default function CreateDogs(){
    
         {({errors}) => ( 
         <Form>
+                 <BotonHome />
+
             <div className={s.grid}>
                 <div>
                     <img className={s.img} src="https://http2.mlstatic.com/D_NQ_NP_716231-MLM46455798737_062021-O.jpg" alt="..." width='200px' />
