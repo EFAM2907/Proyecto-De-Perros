@@ -21,17 +21,8 @@ export default function CreateDogs(){
     },[dispatch])
 
     const Temper = useSelector(state => state.temperament)
-    console.log('estos son  los', Temper)
 
-    // const[input, setInput] = useState({
-    //     temperament:[]
-    // })
-
-    // function handleSelect(e) {
-    //     setInput({
-    //         temperament: [...input.temperament, e.target.value]
-    //     })
-    // }
+  
 
 
     return(
@@ -211,25 +202,9 @@ export default function CreateDogs(){
 
       </div>
 
-        {/* <Field name='temperament' as='select' onchange={(e)=>{handleSelect(e)}}>
-            {Temper.map(e => (
-                     <option key={e.id} value={e.nombre}>{e.nombre}</option>)) }
 
-                     <ul>
-                        <li>
-                            {input.temperament.map(e => <button type="button">{e}</button>) }
-                            {console.log("soy", input.temperament)}
-                        </li>
-                     </ul> */}
-        {/* </Field> */}
+       
 
-        {/* <label >Temperamentos</label>
-            <select  name="temperament" onChange={(e)=> handleSelect(e)} className={s.selects}>
-                {Temper.map(e => (
-                    <option key={e.id} value={e.nombre}>{e.nombre}</option>
-                ))}
-            </select>
-                <ul><li >{input.temperament.map(el=> <button  type='button' key={el.id} >{el}</button>)}</li></ul>*/}
 
          <button className={s.button} type="submit">enviar</button> 
        </div>
@@ -242,8 +217,8 @@ export default function CreateDogs(){
 
     </Formik>
 
-    )
- }
+)
+}
 
 
 
@@ -270,6 +245,7 @@ export default function CreateDogs(){
 
 
 
+//Formulario Normal
 
 
 

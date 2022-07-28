@@ -64,7 +64,6 @@ const rootReducer = (state = initialState, action) => {
             allPerros: action.payload,
     }}
     case ORDER_BY_NAME:{
-        console.log(action.payload === DESC) 
         let ordenamiento = action.payload === "ASC" ?
          state.perros.sort((a,b) =>  { 
             if(a.nombre.toLowerCase() > b.nombre.toLowerCase()){
@@ -113,7 +112,6 @@ const rootReducer = (state = initialState, action) => {
         
         let allPerros = state.perros
         let filtroR = action.payload === ""? allPerros : allPerros.filter(dog =>  {
-            //console.log(dog.nombre)
             return dog.nombre?.includes(action.payload)})
          
             return{
