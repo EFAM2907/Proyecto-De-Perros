@@ -49,10 +49,6 @@ export default function DetailDog() {
       <div >
      <div>
     <div className={a.margin}>
- 
-           
-            
-
             
                {
                id.includes('-')?
